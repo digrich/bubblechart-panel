@@ -1,7 +1,7 @@
 {
     "type": "panel",
     "name": "Bubble Chart",
-    "id": "bubblechart-panel",
+    "id": "digrich-bubblechart-panel",
 
     "info": {
         "description": "Bubblechart panel",

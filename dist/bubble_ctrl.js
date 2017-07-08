@@ -104,8 +104,6 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
 
                     _this.events.on('render', _this.onRender.bind(_this));
                     _this.events.on('init-edit-mode', _this.onInitEditMode.bind(_this));
-                    //this.events.on('panel-teardown', this.onPanelTeardown.bind(this));
-                    //this.events.on('panel-initialized', this.addBubbleChart.bind(this));
                     _this.events.on('data-received', _this.onDataReceived.bind(_this));
                     _this.events.on('data-error', _this.onDataError.bind(_this));
                     _this.events.on('data-snapshot-load', _this.onDataReceived.bind(_this));
@@ -139,7 +137,6 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                                 name: serie.alias,
                                 aliases: serie.alias.split(_this2.panel.groupSeperator),
                                 size: serie.valueFormater(serie.stats[_this2.panel.valueName], _this2.panel.decimal)
-                                //color: this.panel.aliasColors[serie.alias] || this.$rootScope.colors[i]
                             };
                         });
                     }
@@ -153,9 +150,7 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                         _.forEach(this.parsedSeries, function (record) {
                             _this3.createRecurseTree(tree, record.aliases, record);
                         });
-                        //this.bubbleSeries = tree;
                         return tree;
-                        //console.log(JSON.stringify(tree));
                     }
                 }, {
                     key: 'createRecurseTree',
@@ -234,7 +229,6 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                     key: 'addBubbleChart',
                     value: function addBubbleChart() {
                         if ($('#' + this.panel.svgBubbleId).length) {
-                            // console.log("Clearing SVG id: " + this.panel.svgBubbleId);
                             $('#' + this.panel.svgBubbleId).remove();
                         }
 
@@ -261,10 +255,7 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                             bgColor: config.bootData.user.lightTheme ? 'rgb(230,230,230)' : 'rgb(38,38,38)'
                         };
                         this.bubble = new bubbleChart(svg, opt);
-                        // if (this.data)
-                        //     this.bubble.renderData(this.data);
                         if (this.data) this.bubble.renderData(this.data);
-                        // this.bubble.renderData(json_data);
                     }
                 }, {
                     key: 'onInitEditMode',
@@ -315,7 +306,6 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                     key: 'link',
                     value: function link(scope, elem, attrs, ctrl) {
                         var gaugeByClass = elem.find('div#bubble-container');
-                        //gaugeByClass.append('<center><div id="'+ctrl.containerDivId+'"></div></center>');
                         gaugeByClass.append('<div id="' + ctrl.containerDivId + '"></div>');
 
                         var container = gaugeByClass[0].childNodes[1];
@@ -341,7 +331,6 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
 
             _export('BubbleChartCtrl', BubbleChartCtrl);
 
-            // ClockCtrl.templateUrl = 'module.html';
             BubbleChartCtrl.templateUrl = 'module.html';
         }
     };

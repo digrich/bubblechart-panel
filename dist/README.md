@@ -2,10 +2,10 @@
 This panel is meant to have a centralized view of any component in the form of a bubble chart. Circles are grouped together into clusters based on tag values and circle size and color represents the aggregated value of time series data.
 
 ### Grouping
-Circles are grouped in multiple clusters as per alias format. Multiple tag values seperated by a group seperator in alias field define chart hierarchy and grouping. For e.g. '$tag_dc,$tag_host' or 'DataCenter: $tag_dc, Host: $tag_host' will group all hosts under each data center circle. By default comma is a group seperator which can be changed under 'Options' tab. 
+Circles are grouped in multiple clusters as per alias format. Tag values seperated by a group seperator in alias field define chart hierarchy and grouping. For e.g. '$tag_dc,$tag_host' or 'DataCenter: $tag_dc, Host: $tag_host' will group all hosts under each data center circle. By default comma is a group seperator which can be changed under 'Options' tab. 
 
 ### Options
-<img src="src/img/BC_O1.png" title="Options" width="50%" height="50%">
+<img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC_O1.png?raw=true" title="Options" width="50%" height="50%">
 
 ###
 * Stat - Aggregate data same as singlestat panel.
@@ -23,12 +23,14 @@ Circles are grouped in multiple clusters as per alias format. Multiple tag value
         * Colors - Colors for gradient scale.
     * Unique - In unique scheme, different colors categories are applied to circles.
 
-### Supported Databases:
-Tested against following databases. Hopefully it would work with others also. 
+### Compatibility
+Tested against following databases. 
 * [OpenTSDB](http://opentsdb.net/)
 * [Bosun](http://bosun.org/)
 
-### Screenshots: Different color schemes
-<img src="src/img/BC.png" title="Gradient color scheme" width="20%" height="20%">  <img src="src/img/BC1.png" title="Unique color scheme" width="20%" height="20%">  <img src="src/img/BC3.png" title="Threshold color scheme" width="20%" height="20%">  <img src="src/img/BC2.png" title="Group color scheme" width="20%" height="20%">
+Hopefully it would work with other databases also.
+
+### Screenshots: Different color schemes.
+<img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC.png?raw=true" title="Gradient color scheme" width="20%" height="20%">  <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC1.png?raw=true" title="Unique color scheme" width="20%" height="20%">  <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC3.png?raw=true" title="Threshold color scheme" width="20%" height="20%">  <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC2.png?raw=true" title="Group color scheme" width="20%" height="20%">
 
 ### Release Notes
