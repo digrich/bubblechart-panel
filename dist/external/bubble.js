@@ -112,7 +112,6 @@ function bubbleChart(svg, opt) {
     }
 
     function zoom(d) {
-        console.log("Clicked node " + d.name);
         var focus0 = focus;
         focus = d;
         var k = diameter / d.r / 2;
@@ -127,7 +126,6 @@ function bubbleChart(svg, opt) {
     };
 
     function zoomTo(v) {
-
         var k = diameter / v[2];
         view = v;
         node.attr("transform", function(d) {
@@ -137,9 +135,6 @@ function bubbleChart(svg, opt) {
             return ((d.r <= 0 ? 1 : d.r) * k);
         });
         text.attr("dy", ".35em");
-        // text.text(function(d) {
-        //     return d === focus ? d.name : d.name.substring(0, d.r / 3);
-        // });
         text.text(function(d) { return d.name });
         text.style("font-size", function(d) {
             d.textLength = this.getComputedTextLength();
@@ -148,14 +143,6 @@ function bubbleChart(svg, opt) {
     };
 
     function getComputedTextFontSize(textLength, d, k) {
-        // var len = d.name.substring(0, d.r / 3).length;
-        // var size = d.r / 3;
-        // len = len <= 1 ? 2 : len;
-        // size *= 8 / len;
-        // //size += 1;
-        // return Math.round(size) + 'px';
-
-        console.log(d.name + ' -- ' + (k * d.r / 8) + ' ' + d.r + ' - ' + k);
         if (d == root) {
             return Math.round(Math.max(0.5, d.children ? (d.r / 4) : (Math.min(2 * d.r, (2 * d.r - 8) / d.textLength * 10)))) + "px";
         } else {
