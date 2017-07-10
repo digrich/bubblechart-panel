@@ -5,7 +5,7 @@ This panel is meant to have a centralized view of any component in the form of a
 Circles are grouped in multiple clusters as per alias format. Tag values seperated by a group seperator in alias field define chart hierarchy and grouping. For e.g. '$tag_dc,$tag_host' or 'DataCenter: $tag_dc, Host: $tag_host' will group all hosts under each data center circle. By default comma is a group seperator which can be changed under 'Options' tab. 
 
 ### Options
-<img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC_O1.png?raw=true" title="Options" width="50%" height="50%">
+![Options](https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC_O1.png?raw=true)
 
 ###
 * Stat - Aggregate data same as singlestat panel.
@@ -31,6 +31,11 @@ Tested against following databases.
 Hopefully it would work with other databases also.
 
 ### Screenshots: Different color schemes.
+![Gradient color scheme](https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC.png?raw=true)
+![Unique color scheme](https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC1.png?raw=true)
+![Threshold color scheme](https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC3.png?raw=true)
+![Group color scheme](https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC2.png?raw=true)
+
 <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC.png?raw=true" title="Gradient color scheme" width="20%" height="20%">  <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC1.png?raw=true" title="Unique color scheme" width="20%" height="20%">  <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC3.png?raw=true" title="Threshold color scheme" width="20%" height="20%">  <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC2.png?raw=true" title="Group color scheme" width="20%" height="20%">
 
 ### Release Notes
