@@ -84,7 +84,8 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                 gradientThresholds: "50,80",
                 gradientColors: ['red', 'green'],
                 groupSeperator: ',',
-                displayLabel: true
+                displayLabel: true,
+                height: 400
             };
 
             _export('BubbleChartCtrl', BubbleChartCtrl = function (_MetricsPanelCtrl) {
@@ -260,7 +261,7 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                 }, {
                     key: 'onInitEditMode',
                     value: function onInitEditMode() {
-                        this.addEditorTab('Options', 'public/plugins/bubblechart-panel/editor.html', 2);
+                        this.addEditorTab('Options', 'public/plugins/digrich-bubblechart-panel/editor.html', 2);
                         this.unitFormats = kbn.getUnitFormats();
                     }
                 }, {

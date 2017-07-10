@@ -24,6 +24,7 @@ const panelDefaults = {
     gradientColors: ['red', 'green'],
     groupSeperator: ',',
     displayLabel: true,
+    height: 400
 };
 
 export class BubbleChartCtrl extends MetricsPanelCtrl {
@@ -178,7 +179,7 @@ export class BubbleChartCtrl extends MetricsPanelCtrl {
     }
 
     onInitEditMode() {
-        this.addEditorTab('Options', 'public/plugins/bubblechart-panel/editor.html', 2);
+        this.addEditorTab('Options', 'public/plugins/digrich-bubblechart-panel/editor.html', 2);
         this.unitFormats = kbn.getUnitFormats();
     }
 
