@@ -28,33 +28,28 @@ function bubbleChart(svg, opt) {
 
     var bgColor = opt.bgColor;
     var margin = 20;
-    var format = d3.format(",d");
+    var format = d3v3.format(",d");
     var diameter = +svg.attr("width");
     var g = svg.append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
-    var groupDepthCcolor = d3.scale.linear()
+    // Remove all tooltips on new data.
+    $("div[id=tipsy]").remove();
+
+    var groupDepthCcolor = d3v3.scale.linear()
         .domain([-1, 5])
         .range(opt.groupDepthColors)
-        .interpolate(d3.interpolateHcl);
+        .interpolate(d3v3.interpolateHcl);
 
-    var gradientColor = d3.scale.linear()
+    var gradientColor = d3v3.scale.linear()
         .domain(opt.gradientThresholds)
         .range(opt.gradientColors);
 
-    var uniqueColor = d3.scale.category20();
+    var uniqueColor = d3v3.scale.category20();
 
-    var pack = d3.layout.pack()
+    var pack = d3v3.layout.pack()
         .size([diameter - margin, diameter - margin])
         .value(function(d) { return d.size; })
         .padding(2);
-
-    var tip = d3.tip()
-        .attr('class', 'd3-tip')
-        .offset([-10, 0])
-        .html(function(d) {
-            return "<strong>" + d.name + ": </strong>" + formatValue(d.value) + "</span>";
-        })
-    svg.call(tip);
 
     var focus, nodes, view, node, circle, text, title, root;
 
@@ -78,14 +73,9 @@ function bubbleChart(svg, opt) {
             .on("click", function(d) {
                 if (focus !== d) {
                     zoom(d);
-                    d3.event.stopPropagation();
+                    d3v3.event.stopPropagation();
                 }
             })
-            .on('mouseover', function(d) {
-                if (d.name == 'grid') return;
-                tip.show(d);
-            })
-            .on('mouseout', tip.hide);
 
         text = g.selectAll("text")
             .data(nodes)
@@ -105,6 +95,16 @@ function bubbleChart(svg, opt) {
                 return getComputedTextFontSize(d.textLength, d, 2);
             })
 
+        $('svg circle').tipsy({
+            gravity: 'n',
+            fade: true,
+            html: true,
+            title: function() {
+                var d = this.__data__;
+                var msg = d == undefined ? "" : "<strong>" + d.name + (!d.children || d.children.length === 0 ? (": </strong>" + formatValue(d.value) + "</span>") : ("</strong>"));
+                return msg;
+            }
+        });
         node = g.selectAll("circle,text");
         svg.on("click", function() { zoom(root); });
 
@@ -115,10 +115,10 @@ function bubbleChart(svg, opt) {
         var focus0 = focus;
         focus = d;
         var k = diameter / d.r / 2;
-        var transition = d3.transition()
-            .duration(d3.event.altKey ? 7500 : 750)
+        var transition = d3v3.transition()
+            .duration(d3v3.event.altKey ? 7500 : 750)
             .tween("zoom", function(d) {
-                var i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2 + margin]);
+                var i = d3v3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2 + margin]);
                 return function(t) {
                     zoomTo(i(t));
                 };
@@ -129,10 +129,10 @@ function bubbleChart(svg, opt) {
         var k = diameter / v[2];
         view = v;
         node.attr("transform", function(d) {
-            return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")";
+            return isNaN(d.x) ? "translate(0,0)" : "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")";
         });
         circle.attr("r", function(d) {
-            return ((d.r <= 0 ? 1 : d.r) * k);
+            return isNaN(d.r) ? 0.5 : ((d.r <= 0 ? 1 : d.r) * k);
         });
         text.attr("dy", ".35em");
         text.text(function(d) { return d.name });

@@ -1,9 +1,11 @@
 import { MetricsPanelCtrl } from 'app/plugins/sdk';
-import * as d3 from './external/d3.v3.min';
+import * as d3v3 from './external/d3.v3.min';
 import _ from 'lodash';
 import $ from 'jquery';
 import TimeSeries from 'app/core/time_series';
-import './external/d3.tip.v0.6.3';
+//import './external/d3.tip.v0.6.3';
+import './external/jquery.tipsy.min.js';
+import './css/jquery.tipsy.min.css!';
 import './css/bubble-panel.css!';
 import './external/bubble';
 import config from 'app/core/config';
@@ -24,7 +26,8 @@ const panelDefaults = {
     gradientColors: ['red', 'green'],
     groupSeperator: ',',
     displayLabel: true,
-    height: 400
+    height: 30 * 11,
+    gridPos: { x: 0, y: 0, w: 12, h: 11 }
 };
 
 export class BubbleChartCtrl extends MetricsPanelCtrl {
@@ -32,6 +35,7 @@ export class BubbleChartCtrl extends MetricsPanelCtrl {
     constructor($scope, $injector) {
         super($scope, $injector);
         _.defaultsDeep(this.panel, panelDefaults);
+        //this.panel.gridPos = panelDefaults.gridPos;
 
         this.containerDivId = 'container_' + this.panel.id;
         this.panelContainer = null;
@@ -71,7 +75,7 @@ export class BubbleChartCtrl extends MetricsPanelCtrl {
     }
 
     parseSeriesToJSON() {
-        var tree = { "name": "grid", "children": [] };
+        var tree = { "name": this.panel.title, "children": [] };
         this.parsedSeries = this.parseSeries(this.series);
         _.forEach(this.parsedSeries, record => {
             this.createRecurseTree(tree, record.aliases, record);
@@ -149,11 +153,12 @@ export class BubbleChartCtrl extends MetricsPanelCtrl {
         if (this.panel.title !== "") {
             panelTitleOffset = 25;
         }
-        this.panelHeight = this.getPanelHeight() - panelTitleOffset;
-        this.panelWidth = this.getPanelWidthBySpan();
+
+        this.panelHeight = this.panel.gridPos ? this.panel.gridPos.h * 30 : this.getPanelHeight() - panelTitleOffset;
+        this.panelWidth = this.panel.gridPos ? this.panel.gridPos.w * 30 : this.getPanelWidthBySpan();
 
         this.panelHeight = this.panelWidth = Math.min(this.panelHeight, this.panelWidth);
-        var svg = d3.select(this.panel.svgContainer)
+        var svg = d3v3.select(this.panel.svgContainer)
             .append("svg")
             .attr("width", this.panelWidth)
             .attr("height", this.panelHeight)
@@ -200,7 +205,7 @@ export class BubbleChartCtrl extends MetricsPanelCtrl {
     }
 
     getPanelHeight() {
-        // panel can have a fixed height via options
+        //panel can have a fixed height via options
         var height = this.panel.height || this.row.height || 250;
         if (_.isString(height)) {
             height = parseInt(height.replace('px', ''), 10);

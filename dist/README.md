@@ -27,6 +27,17 @@ Circles are grouped in multiple clusters as per alias format. Tag values separat
 Tested against following databases.
 * [OpenTSDB](http://opentsdb.net/)
 * [Bosun](http://bosun.org/)
+* [MySQL](http://docs.grafana.org/features/datasources/mysql/#using-mysql-in-grafana)
+    * Use CONCAT function for the metric field in SQL expression to achieve multiple group hierarchy.
+    ```sql 
+    SELECT
+    UNIX_TIMESTAMP(date) as time_sec,
+    amt as value,
+    CONCAT(server, ',', org) as metric
+    FROM trade
+    WHERE $__timeFilter(date)
+    ORDER BY date ASC
+    ```
 
 Hopefully, it would work with other databases also.
 
@@ -37,3 +48,12 @@ Hopefully, it would work with other databases also.
 ![Group color scheme](https://raw.githubusercontent.com/digrich/bubblechart-panel/master/src/img/BC2.png?raw=true)
 
 ### Release Notes
+* v1.0.0
+    * Initial commit.
+* v1.1.0
+    * Compatability to Grafana 5.0.0 release.
+    * Changed outer circle tooltip name to panel title name. 
+    * Fixes [Tags not readable. CSS collision](https://github.com/digrich/bubblechart-panel/issues/4)
+    * Fixes [MySQL datasource example for grouping.](https://github.com/digrich/bubblechart-panel/issues/3)
+    * Fixes [Label artifact left behind on refresh.](https://github.com/digrich/bubblechart-panel/issues/2)
+    * Fixes [Chart is not show in combination with other d3 based plugin.](https://github.com/digrich/bubblechart-panel/issues/1)

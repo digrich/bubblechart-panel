@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 'app/core/time_series', './external/d3.tip.v0.6.3', './css/bubble-panel.css!', './external/bubble', 'app/core/config', 'app/core/utils/kbn'], function (_export, _context) {
+System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 'app/core/time_series', './external/jquery.tipsy.min.js', './css/jquery.tipsy.min.css!', './css/bubble-panel.css!', './external/bubble', 'app/core/config', 'app/core/utils/kbn'], function (_export, _context) {
     "use strict";
 
-    var MetricsPanelCtrl, d3, _, $, TimeSeries, config, kbn, _createClass, panelDefaults, BubbleChartCtrl;
+    var MetricsPanelCtrl, d3v3, _, $, TimeSeries, config, kbn, _createClass, panelDefaults, BubbleChartCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -39,14 +39,14 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
         setters: [function (_appPluginsSdk) {
             MetricsPanelCtrl = _appPluginsSdk.MetricsPanelCtrl;
         }, function (_externalD3V3Min) {
-            d3 = _externalD3V3Min;
+            d3v3 = _externalD3V3Min;
         }, function (_lodash) {
             _ = _lodash.default;
         }, function (_jquery) {
             $ = _jquery.default;
         }, function (_appCoreTime_series) {
             TimeSeries = _appCoreTime_series.default;
-        }, function (_externalD3TipV) {}, function (_cssBubblePanelCss) {}, function (_externalBubble) {}, function (_appCoreConfig) {
+        }, function (_externalJqueryTipsyMinJs) {}, function (_cssJqueryTipsyMinCss) {}, function (_cssBubblePanelCss) {}, function (_externalBubble) {}, function (_appCoreConfig) {
             config = _appCoreConfig.default;
         }, function (_appCoreUtilsKbn) {
             kbn = _appCoreUtilsKbn.default;
@@ -85,7 +85,8 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                 gradientColors: ['red', 'green'],
                 groupSeperator: ',',
                 displayLabel: true,
-                height: 400
+                height: 30 * 11,
+                gridPos: { x: 0, y: 0, w: 12, h: 11 }
             };
 
             _export('BubbleChartCtrl', BubbleChartCtrl = function (_MetricsPanelCtrl) {
@@ -97,6 +98,7 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                     var _this = _possibleConstructorReturn(this, (BubbleChartCtrl.__proto__ || Object.getPrototypeOf(BubbleChartCtrl)).call(this, $scope, $injector));
 
                     _.defaultsDeep(_this.panel, panelDefaults);
+                    //this.panel.gridPos = panelDefaults.gridPos;
 
                     _this.containerDivId = 'container_' + _this.panel.id;
                     _this.panelContainer = null;
@@ -146,7 +148,7 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                     value: function parseSeriesToJSON() {
                         var _this3 = this;
 
-                        var tree = { "name": "grid", "children": [] };
+                        var tree = { "name": this.panel.title, "children": [] };
                         this.parsedSeries = this.parseSeries(this.series);
                         _.forEach(this.parsedSeries, function (record) {
                             _this3.createRecurseTree(tree, record.aliases, record);
@@ -237,11 +239,12 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                         if (this.panel.title !== "") {
                             panelTitleOffset = 25;
                         }
-                        this.panelHeight = this.getPanelHeight() - panelTitleOffset;
-                        this.panelWidth = this.getPanelWidthBySpan();
+
+                        this.panelHeight = this.panel.gridPos ? this.panel.gridPos.h * 30 : this.getPanelHeight() - panelTitleOffset;
+                        this.panelWidth = this.panel.gridPos ? this.panel.gridPos.w * 30 : this.getPanelWidthBySpan();
 
                         this.panelHeight = this.panelWidth = Math.min(this.panelHeight, this.panelWidth);
-                        var svg = d3.select(this.panel.svgContainer).append("svg").attr("width", this.panelWidth).attr("height", this.panelHeight).attr("viewBox", '0,0,' + this.panelHeight + ',' + this.panelWidth).attr("id", this.panel.svgBubbleId);
+                        var svg = d3v3.select(this.panel.svgContainer).append("svg").attr("width", this.panelWidth).attr("height", this.panelHeight).attr("viewBox", '0,0,' + this.panelHeight + ',' + this.panelWidth).attr("id", this.panel.svgBubbleId);
 
                         var opt = {
                             colorScheme: this.panel.colorScheme,
@@ -286,7 +289,7 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                 }, {
                     key: 'getPanelHeight',
                     value: function getPanelHeight() {
-                        // panel can have a fixed height via options
+                        //panel can have a fixed height via options
                         var height = this.panel.height || this.row.height || 250;
                         if (_.isString(height)) {
                             height = parseInt(height.replace('px', ''), 10);
