@@ -110,6 +110,17 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                     _this.events.on('data-received', _this.onDataReceived.bind(_this));
                     _this.events.on('data-error', _this.onDataError.bind(_this));
                     _this.events.on('data-snapshot-load', _this.onDataReceived.bind(_this));
+
+                    $.getScript('https://www.googletagmanager.com/gtag/js?id=UA-113913684-1', function () {
+                        window.dataLayer = window.dataLayer || [];
+
+                        function gtag() {
+                            dataLayer.push(arguments);
+                        }
+                        gtag('js', new Date());
+                        gtag('config', 'UA-113913684-1');
+                        gtag('event', 'load', { 'plugin': 'BubbleChart' });
+                    });
                     return _this;
                 }
 
