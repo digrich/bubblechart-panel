@@ -98,7 +98,6 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                     var _this = _possibleConstructorReturn(this, (BubbleChartCtrl.__proto__ || Object.getPrototypeOf(BubbleChartCtrl)).call(this, $scope, $injector));
 
                     _.defaultsDeep(_this.panel, panelDefaults);
-                    //this.panel.gridPos = panelDefaults.gridPos;
 
                     _this.containerDivId = 'container_' + _this.panel.id;
                     _this.panelContainer = null;
@@ -110,17 +109,6 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                     _this.events.on('data-received', _this.onDataReceived.bind(_this));
                     _this.events.on('data-error', _this.onDataError.bind(_this));
                     _this.events.on('data-snapshot-load', _this.onDataReceived.bind(_this));
-
-                    $.getScript('https://www.googletagmanager.com/gtag/js?id=UA-113913684-1', function () {
-                        window.dataLayer = window.dataLayer || [];
-
-                        function gtag() {
-                            dataLayer.push(arguments);
-                        }
-                        gtag('js', new Date());
-                        gtag('config', 'UA-113913684-1');
-                        gtag('event', 'load', { 'plugin': 'BubbleChart' });
-                    });
                     return _this;
                 }
 

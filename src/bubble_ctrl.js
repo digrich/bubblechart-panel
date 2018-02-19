@@ -35,7 +35,6 @@ export class BubbleChartCtrl extends MetricsPanelCtrl {
     constructor($scope, $injector) {
         super($scope, $injector);
         _.defaultsDeep(this.panel, panelDefaults);
-        //this.panel.gridPos = panelDefaults.gridPos;
 
         this.containerDivId = 'container_' + this.panel.id;
         this.panelContainer = null;
@@ -47,15 +46,6 @@ export class BubbleChartCtrl extends MetricsPanelCtrl {
         this.events.on('data-received', this.onDataReceived.bind(this));
         this.events.on('data-error', this.onDataError.bind(this));
         this.events.on('data-snapshot-load', this.onDataReceived.bind(this));
-
-        $.getScript('https://www.googletagmanager.com/gtag/js?id=UA-113913684-1', function() {
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'UA-113913684-1');
-            gtag('event', 'load', { 'plugin': 'BubbleChart' });
-        });
     }
 
     onDataReceived(dataList) {
