@@ -3,7 +3,6 @@ import * as d3v3 from './external/d3.v3.min';
 import _ from 'lodash';
 import $ from 'jquery';
 import TimeSeries from 'app/core/time_series';
-//import './external/d3.tip.v0.6.3';
 import './external/jquery.tipsy.min.js';
 import './css/jquery.tipsy.min.css!';
 import './css/bubble-panel.css!';
@@ -26,7 +25,7 @@ const panelDefaults = {
     gradientColors: ['red', 'green'],
     groupSeperator: ',',
     displayLabel: true,
-    height: 30 * 11,
+    height: 400,
     gridPos: { x: 0, y: 0, w: 12, h: 11 }
 };
 
@@ -153,8 +152,8 @@ export class BubbleChartCtrl extends MetricsPanelCtrl {
             panelTitleOffset = 25;
         }
 
-        this.panelHeight = this.panel.gridPos ? this.panel.gridPos.h * 30 : this.getPanelHeight() - panelTitleOffset;
-        this.panelWidth = this.panel.gridPos ? this.panel.gridPos.w * 30 : this.getPanelWidthBySpan();
+        this.panelHeight = this.isNewDashboardLayout() ? this.panel.gridPos.h * 30 : this.getPanelHeight() - panelTitleOffset;
+        this.panelWidth = this.isNewDashboardLayout() ? this.panel.gridPos.w * 30 : this.getPanelWidthBySpan();
 
         this.panelHeight = this.panelWidth = Math.min(this.panelHeight, this.panelWidth);
         var svg = d3v3.select(this.panel.svgContainer)
@@ -180,6 +179,10 @@ export class BubbleChartCtrl extends MetricsPanelCtrl {
         this.bubble = new bubbleChart(svg, opt);
         if (this.data)
             this.bubble.renderData(this.data);
+    }
+
+    isNewDashboardLayout() {
+        return this.panel.updateGridPos !== undefined;
     }
 
     onInitEditMode() {

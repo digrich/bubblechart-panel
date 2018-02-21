@@ -85,7 +85,7 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                 gradientColors: ['red', 'green'],
                 groupSeperator: ',',
                 displayLabel: true,
-                height: 30 * 11,
+                height: 400,
                 gridPos: { x: 0, y: 0, w: 12, h: 11 }
             };
 
@@ -239,8 +239,8 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                             panelTitleOffset = 25;
                         }
 
-                        this.panelHeight = this.panel.gridPos ? this.panel.gridPos.h * 30 : this.getPanelHeight() - panelTitleOffset;
-                        this.panelWidth = this.panel.gridPos ? this.panel.gridPos.w * 30 : this.getPanelWidthBySpan();
+                        this.panelHeight = this.isNewDashboardLayout() ? this.panel.gridPos.h * 30 : this.getPanelHeight() - panelTitleOffset;
+                        this.panelWidth = this.isNewDashboardLayout() ? this.panel.gridPos.w * 30 : this.getPanelWidthBySpan();
 
                         this.panelHeight = this.panelWidth = Math.min(this.panelHeight, this.panelWidth);
                         var svg = d3v3.select(this.panel.svgContainer).append("svg").attr("width", this.panelWidth).attr("height", this.panelHeight).attr("viewBox", '0,0,' + this.panelHeight + ',' + this.panelWidth).attr("id", this.panel.svgBubbleId);
@@ -259,6 +259,11 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                         };
                         this.bubble = new bubbleChart(svg, opt);
                         if (this.data) this.bubble.renderData(this.data);
+                    }
+                }, {
+                    key: 'isNewDashboardLayout',
+                    value: function isNewDashboardLayout() {
+                        return this.panel.updateGridPos !== undefined;
                     }
                 }, {
                     key: 'onInitEditMode',
