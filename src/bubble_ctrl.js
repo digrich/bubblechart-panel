@@ -63,13 +63,14 @@ export class BubbleChartCtrl extends MetricsPanelCtrl {
     }
 
     parseSeries(series) {
-        return _.map(this.series, (serie, i) => {
-            return {
-                name: serie.alias,
-                aliases: serie.alias.split(this.panel.groupSeperator),
-                size: serie.valueFormater(serie.stats[this.panel.valueName], this.panel.decimal)
-            };
-        });
+      return _.map(this.series, (serie, i) => {
+        var val = serie.valueFormater( serie.stats[this.panel.valueName],this.panel.decimal );
+          return {
+            name: serie.alias,
+            aliases: serie.alias.split(this.panel.groupSeperator),
+            size: _.get( val,"text",val )
+          };
+      });
     }
 
     parseSeriesToJSON() {
@@ -151,9 +152,9 @@ export class BubbleChartCtrl extends MetricsPanelCtrl {
         if (this.panel.title !== "") {
             panelTitleOffset = 25;
         }
-
-        this.panelHeight = this.isNewDashboardLayout() ? this.panel.gridPos.h * 30 : this.getPanelHeight() - panelTitleOffset;
-        this.panelWidth = this.isNewDashboardLayout() ? this.panel.gridPos.w * 30 : this.getPanelWidthBySpan();
+        
+        this.panelHeight=this.isNewDashboardLayout()? this.height : this.getPanelHeight() - panelTitleOffset;
+        this.panelWidth = this.isNewDashboardLayout() ? this.width : this.getPanelWidthBySpan();
 
         this.panelHeight = this.panelWidth = Math.min(this.panelHeight, this.panelWidth);
         var svg = d3v3.select(this.panel.svgContainer)

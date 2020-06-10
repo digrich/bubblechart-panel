@@ -135,10 +135,11 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                         var _this2 = this;
 
                         return _.map(this.series, function (serie, i) {
+                            var val = serie.valueFormater(serie.stats[_this2.panel.valueName], _this2.panel.decimal);
                             return {
                                 name: serie.alias,
                                 aliases: serie.alias.split(_this2.panel.groupSeperator),
-                                size: serie.valueFormater(serie.stats[_this2.panel.valueName], _this2.panel.decimal)
+                                size: _.get(val, "text", val)
                             };
                         });
                     }
@@ -239,8 +240,8 @@ System.register(['app/plugins/sdk', './external/d3.v3.min', 'lodash', 'jquery', 
                             panelTitleOffset = 25;
                         }
 
-                        this.panelHeight = this.isNewDashboardLayout() ? this.panel.gridPos.h * 30 : this.getPanelHeight() - panelTitleOffset;
-                        this.panelWidth = this.isNewDashboardLayout() ? this.panel.gridPos.w * 30 : this.getPanelWidthBySpan();
+                        this.panelHeight = this.isNewDashboardLayout() ? this.height : this.getPanelHeight() - panelTitleOffset;
+                        this.panelWidth = this.isNewDashboardLayout() ? this.width : this.getPanelWidthBySpan();
 
                         this.panelHeight = this.panelWidth = Math.min(this.panelHeight, this.panelWidth);
                         var svg = d3v3.select(this.panel.svgContainer).append("svg").attr("width", this.panelWidth).attr("height", this.panelHeight).attr("viewBox", '0,0,' + this.panelHeight + ',' + this.panelWidth).attr("id", this.panel.svgBubbleId);
