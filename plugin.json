@@ -22,8 +22,8 @@
             { "name": "Showcase", "path": "img/BC.png" },
             { "name": "Options", "path": "img/BC_O1.png" }
         ],
-        "version": "1.1.0",
-        "updated": "02-07-2018"
+        "version": "1.2.0",
+        "updated": "27-07-2020"
     },
 
     "dependencies": {
