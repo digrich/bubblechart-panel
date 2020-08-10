@@ -23,11 +23,11 @@
             { "name": "Options", "path": "img/BC_O1.png" }
         ],
         "version": "1.2.0",
-        "updated": "27-07-2020"
+        "updated": "2020-08-10"
     },
 
     "dependencies": {
-        "grafanaVersion": "3.x.x",
+        "grafanaDependency": "4.5.1",
         "plugins": []
     }
 }
