@@ -25,7 +25,15 @@ The plugin is compatible with Grafana 10 and above.
 
 ## Screenshots
 
-<div style="display: flex; flex-wrap: wrap;">
+| ![Gradient color scheme](https://raw.githubusercontent.com/digrich/bubblechart-panel/migrate-to-react/src/img/BC1.png) | ![Unique color scheme](https://raw.githubusercontent.com/digrich/bubblechart-panel/migrate-to-react/src/img/BC2.png) | ![Threshold color scheme](https://raw.githubusercontent.com/digrich/bubblechart-panel/migrate-to-react/src/img/BC3.png) 
+|:--:|:--:|:--:|
+| Group color scheme | Gradient color scheme | Unique color scheme |
+
+| ![Group color scheme](https://raw.githubusercontent.com/digrich/bubblechart-panel/migrate-to-react/src/img/BC4.png) | ![Threshold color scheme](https://raw.githubusercontent.com/digrich/bubblechart-panel/migrate-to-react/src/img/BC5.png) | ![Group color scheme](https://raw.githubusercontent.com/digrich/bubblechart-panel/migrate-to-react/src/img/BC6.png) |
+|:--:|:--:|:--:|
+| Gradient color scheme | Threshold color scheme | Gradient color scheme |
+
+<!-- <div style="display: flex; flex-wrap: wrap;">
   <figure style="margin: 10px;">
     <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/migrate-to-react/src/img/BC1.png" width="300" alt="Gradient color scheme">
     <figcaption>Group color scheme</figcaption>
@@ -55,7 +63,7 @@ The plugin is compatible with Grafana 10 and above.
     <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/migrate-to-react/src/img/BC6.png" width="300" alt="Group color scheme">
     <figcaption>Gradient color scheme</figcaption>
   </figure>
-</div>
+</div> -->
 
 ## Grouping
 The chart allows you to group circles based on data naming conventions using the group separator (default: comma). In the datasource query, you can use aliases to determine the hierarchy order by employing different tag names separated by the configurable group separator. The chart will then automatically create clusters based on the alias name pattern. This feature is beneficial as it enables you to control the organization of circles on the chart by simply adjusting the order of tag names in the alias. For example, if your data is related to both data centers and hosts, and in the alias, you separate them by a comma like $tag_dc,$tag_host, the chart will automatically group all host circles under the data center circle.
