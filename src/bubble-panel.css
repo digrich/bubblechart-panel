@@ -1,0 +1,22 @@
+.node {
+    cursor: pointer;
+    stroke: #555;
+    stroke-width: 0.5px;
+    outline: none;
+}
+
+.node:hover {
+    stroke: #000;
+    stroke-width: 2.0px;
+}
+
+.node--leaf {
+    fill: white;
+    pointer-events: all;
+}
+
+.label,
+.node--root,
+.node--leaf {
+    pointer-events: all;
+}

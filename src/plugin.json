@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "panel",
+  "name": "Bubble Chart",
+  "id": "digrich-bubblechart-panel",
+  "info": {
+    "keywords": ["bubblechart", "panel"],
+    "description": "Bubble chart panel",
+    "author": {
+      "name": "Digvijay<digvijay.rich@gmail.com>",
+      "url": "https://github.com/digrich"
+    },
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [
+      { "name": "Project site", "url": "https://github.com/digrich/bubblechart-panel" },
+      { "name": "MIT License", "url": "https://github.com/digrich/bubblechart-panel/blob/master/LICENSE" }
+    ],
+    "screenshots": [
+      { "name": "Showcase", "path": "img/logo.svg" },
+      { "name": "Options", "path": "img/Options.png" }
+    ],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "dependencies": {
+    "grafanaDependency": ">=10.0.3",
+    "plugins": []
+  }
+}
