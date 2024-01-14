@@ -27,32 +27,32 @@ The plugin is compatible with Grafana 10 and above.
 
 <div style="display: flex; flex-wrap: wrap;">
   <figure style="margin: 10px;">
-    <img src="img/BC1.png" width="300" alt="Gradient color scheme">
+    <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/migrate-to-react/src/img/BC1.png" width="300" alt="Gradient color scheme">
     <figcaption>Group color scheme</figcaption>
   </figure>
 
   <figure style="margin: 10px;">
-    <img src="img/BC2.png" width="300" alt="Unique color scheme">
+    <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/migrate-to-react/src/img/BC2.png" width="300" alt="Unique color scheme">
     <figcaption>Gradient color scheme</figcaption>
   </figure>
 
   <figure style="margin: 10px;">
-    <img src="img/BC3.png" width="300" alt="Threshold color scheme">
+    <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/migrate-to-react/src/img/BC3.png" width="300" alt="Threshold color scheme">
     <figcaption>Unique color scheme</figcaption>
   </figure>
 
   <figure style="margin: 10px;">
-    <img src="img/BC4.png" width="300" alt="Group color scheme">
+    <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/migrate-to-react/src/img/BC4.png" width="300" alt="Group color scheme">
     <figcaption>Gradient color scheme</figcaption>
   </figure>
 
   <figure style="margin: 10px;">
-    <img src="img/BC5.png" width="300" alt="Threshold color scheme">
+    <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/migrate-to-react/src/img/BC5.png" width="300" alt="Threshold color scheme">
     <figcaption>Threshold color scheme</figcaption>
   </figure>
 
   <figure style="margin: 10px;">
-    <img src="img/BC6.png" width="300" alt="Group color scheme">
+    <img src="https://raw.githubusercontent.com/digrich/bubblechart-panel/migrate-to-react/src/img/BC6.png" width="300" alt="Group color scheme">
     <figcaption>Gradient color scheme</figcaption>
   </figure>
 </div>
