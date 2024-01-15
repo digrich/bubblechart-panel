@@ -33,3 +33,8 @@ e2e-results/
 .idea
 
 .eslintcache
+
+package-lock.json
+.history
+.DS_Store
+src/.DS_Store
