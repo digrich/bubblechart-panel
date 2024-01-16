@@ -34,7 +34,6 @@ e2e-results/
 
 .eslintcache
 
-package-lock.json
 .history
 .DS_Store
 src/.DS_Store
