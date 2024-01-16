@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {BubbleChartLabels, BubbleChartProps, CircleData, TreeRecord} from 'types';
 import {Tooltip as ReactTooltip} from 'react-tooltip';
 import * as d3 from 'd3';
-import {formattedValueToString, getValueFormat} from '@grafana/data';
+import {GrafanaThemeType, formattedValueToString, getValueFormat} from '@grafana/data';
 import {Selection} from 'd3-selection';
 import {} from 'd3-hierarchy';
 import * as chromatic from 'd3-scale-chromatic';
@@ -40,7 +40,7 @@ const BubbleChart: React.FC<BubbleChartProps> = ({data, width, height, opt}) => 
         unit: opt.unit?.trim() || 'short',
         decimals: opt.decimals,
         valueFormatFunc: formattedValueToString,
-        bgColor: config.bootData.user.lightTheme ? 'rgb(230,230,230)' : 'rgb(38,38,38)'
+        bgColor: config.bootData.user.theme === GrafanaThemeType.Light ? 'rgb(230,230,230)' : 'rgb(38,38,38)'
       };
       function parseThresholds(thresholds: string): number[] {
         return thresholds.split(',').map((strValue: string) => Number(strValue.trim()));
@@ -97,10 +97,10 @@ const BubbleChart: React.FC<BubbleChartProps> = ({data, width, height, opt}) => 
       const node = g.selectAll("circle, text");
       zoomTo([root.x, root.y, root.r * 2 + margin]);
 
-      function zoom(d: d3.HierarchyCircularNode<TreeRecord>) {
+      function zoom(d: d3.HierarchyCircularNode<TreeRecord>, event: MouseEvent) {
         focus = d;
         d3.transition<MouseEvent>()
-          .duration((event as MouseEvent).altKey ? 7500 : 750)
+          .duration(event.altKey ? 7500 : 750)
           .tween("zoom", function(d) {
             let i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2 + margin]);
             return function(t) {
@@ -207,7 +207,7 @@ const BubbleChart: React.FC<BubbleChartProps> = ({data, width, height, opt}) => 
           .attr('data-tooltip-html', (d) => getTooltipText(d))
           .on("click", (event: MouseEvent, d: d3.HierarchyCircularNode<TreeRecord>) => {
             if(focus !== d) {
-              zoom(d);
+              zoom(d, event);
               event.stopPropagation();
             }
           })
