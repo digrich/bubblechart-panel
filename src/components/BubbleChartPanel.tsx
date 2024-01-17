@@ -6,6 +6,8 @@ import _ from 'lodash';
 
 export const BubbleChartPanel = ({width, height, data, options}: PanelProps<BubbleChartOptions>) => {
   const parseSeries = (series: DataFrame[]): ParsedSeriesRecord[] => {
+    console.log('parseSeries', series);
+
     let parsedSeries: ParsedSeriesRecord[] = _.map(series, (serieFrame: DataFrame, i) => {
       const valueFields: Field[] = [];
       for(const aField of serieFrame.fields) {
@@ -43,13 +45,22 @@ export const BubbleChartPanel = ({width, height, data, options}: PanelProps<Bubb
         const standardCalcs = reduceField({field: valueField!, reducers: ['bogus']});
         let operatorValue = standardCalcs[reducerStat];
         const result = getValueFormat(options.unit)(operatorValue, 2, undefined, undefined);
+        let aliases = [valueField.name];
+        if (options.groupBy === "Name") {
+          aliases = serieFrame.name?.split(options.groupSeparator) || [valueField.name];
+        } else if (options.groupBy === "Label") {
+          if (options.groupLabels === undefined || options.groupLabels.length === 0) {
+            aliases = [valueField.name];
+          } else {
+            aliases = options.groupLabels.map((label: string) => valueField.labels?.[label] || '');
+          }
+        }
         formattedFields.push({
           name: serieFrame.name || valueField.name,
-          aliases: serieFrame.name?.split(options.groupSeparator) || [valueField.name],
+          aliases: aliases,
           value: result.text
         });
       }
-
       return formattedFields[0];
     });
     return _.filter(parsedSeries, (record: ParsedSeriesRecord) => record !== undefined);

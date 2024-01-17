@@ -269,8 +269,6 @@ const BubbleChart: React.FC<BubbleChartProps> = ({data, width, height, opt}) => 
         // if (hasValue && d.data.value !== undefined) {
         //     textContent += `<tspan>${formatValue(d.data.value)}</tspan>`;
         // }
-        
-        console.log(textContent);
         return textContent;
       }
 

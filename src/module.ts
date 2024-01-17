@@ -1,4 +1,4 @@
-import {PanelPlugin} from '@grafana/data';
+import {FieldOverrideContext, FieldType, PanelPlugin, } from '@grafana/data';
 import {StatOptions, BubbleChartOptions, BubbleChartLabels} from './types';
 import {BubbleChartPanel} from 'components/BubbleChartPanel';
 import {FieldConfig} from '@grafana/schema';
@@ -62,11 +62,58 @@ export const plugin = new PanelPlugin < BubbleChartOptions, FieldConfig> (Bubble
         description: 'Number of decimals',
         defaultValue: '2',
       })
+      .addRadio({
+        name: 'Group by',
+        path: 'groupBy',
+        description: 'Select the type of grouping to be used: Name or Label',
+        defaultValue: 'Name',
+        settings: {
+          options: [
+            { value: "Name", label: "Name" },
+            { value: "Label", label: "Label" },
+          ],
+        }
+      })
+      .addMultiSelect({
+        name: 'Labels',
+        path: 'groupLabels',
+        description: 'Select labels from the dropdown to customize the order of grouping.',        
+        settings: {
+          allowCustomValue: true,
+          options: [],
+          getOptions: async (context: FieldOverrideContext) => {
+            const labelOptions: Array<{
+              value: string;
+              label: string;
+            }> = [];
+            
+            if (context && context.data) {
+              const frame = context.data[0];
+              for (const field of frame.fields) {
+                if (field.type !== FieldType.number) {
+                  continue;
+                }
+                const labels = field.labels;
+                for (const key in labels) {
+                  labelOptions.push({ value: key, label: key });
+                }
+              }
+            } 
+            return Promise.resolve(labelOptions);
+          },
+        },
+        showIf(currentOptions, data) {
+          return currentOptions.groupBy === "Label";
+        },
+      })
       .addTextInput({
         path: 'groupSeparator',
-        name: 'Group Separator',
-        description: "Type a character in this field to arrange tag values hierarchically in the 'Alias' field under the datasource query tab, enabling left-to-right splitting for parent-child relationships in the circles. For instance, use ',' in the alias like $tag_env,$tag_host.",
+        name: 'Separator',
+        description: "For the 'Name' option, use this to split names using a defined character for hierarchical grouping. For example, if '$tag_env,$tag_host' is defined as aliases in the datasource query tab, using ',' as a splitter will group all host circles under the same environment.",
         defaultValue: ',',
+        showIf(currentOptions, data) {
+          return currentOptions.groupBy === "Name";
+        },
       })
       .addCustomEditor({
         name: 'Color scheme',

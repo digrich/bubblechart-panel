@@ -34,7 +34,11 @@ The plugin is compatible with Grafana 10 and above.
 | Gradient color scheme | Threshold color scheme | Gradient color scheme |
 
 ## Grouping
-The chart allows you to group circles based on data naming conventions using the group separator (default: comma). In the datasource query, you can use aliases to determine the hierarchy order by employing different tag names separated by the configurable group separator. The chart will then automatically create clusters based on the alias name pattern. This feature is beneficial as it enables you to control the organization of circles on the chart by simply adjusting the order of tag names in the alias. For example, if your data is related to both data centers and hosts, and in the alias, you separate them by a comma like $tag_dc,$tag_host, the chart will automatically group all host circles under the data center circle.
+This panel provides two options for grouping circles: 'Name' and 'Label.' When selecting the 'Name' option, utilize the group separator (default: comma) to split names and establish hierarchical grouping based on data naming conventions. In the datasource query, use aliases with different tag names separated by the configurable group separator to determine the hierarchy order. This dynamic feature allows you to control the organization of circles on the chart by adjusting the order of tag names in the alias. For instance, if your data involves both data centers and hosts, and your alias is structured as $tag_dc,$tag_host, the chart will automatically group all host circles under the data center circle.
+
+Alternatively, when the 'Label' option is selected, use the dropdown menu to select labels and customize the grouping order. This flexibility is particularly useful when dealing with series that do not have a name or alias defined properly, providing better control over circle organization on the chart.
+
+To handle non-time series formatted data, first, convert it to a multiple series format using Grafana's 'Partition by values' transformation. In the chart options, select the 'Group by' option as 'Label' and choose appropriate labels; it will parse the data properly.
 
 ## Options
 

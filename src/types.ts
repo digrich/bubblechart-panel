@@ -9,6 +9,8 @@ export interface BubbleChartPanelProps extends PanelProps {
 
 export interface BubbleChartOptions extends PanelProps, common.OptionsWithTooltip, common.OptionsWithLegend {
   displayLabels: BubbleChartLabels;
+  groupBy: string;
+  groupLabels: string[];
   stat: StatOptions;
   unit: string;
   decimals: number;
@@ -93,3 +95,8 @@ export enum BubbleChartLabels {
   Name = 'name',
   Value = 'value'
 }
+
+// export enum BubbleChartGroupLabels {
+//   Name = 'series_name',
+//   Label = 'series_label'
+// }

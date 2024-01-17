@@ -18,37 +18,996 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
-        "type": "grafana",
-        "uid": "grafana"
+        "type": "marcusolsson-static-datasource",
+        "uid": "P1D2C73DC01F2359B"
       },
+      "description": "",
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 9,
+        "w": 6,
         "x": 0,
         "y": 0
       },
-      "id": 1,
+      "id": 2,
       "options": {
-        "seriesCountSize": "sm",
-        "showSeriesCount": false,
-        "text": "Default value of text input option"
+        "colorSchemeParams": {
+          "colorScheme": "Group",
+          "gradientColors": [
+            "#73bf69",
+            "#f2495c"
+          ],
+          "gradientThresholds": "20,50",
+          "groupDepthColors": [
+            "#E0B400",
+            "#FFF899"
+          ],
+          "thresholdColors": [
+            "#73bf69",
+            "#FAD22A",
+            "#f2495c"
+          ],
+          "thresholds": "20,50"
+        },
+        "decimals": "2",
+        "displayLabels": "name",
+        "groupBy": "Label",
+        "groupLabels": [
+          "host"
+        ],
+        "groupSeparator": ",",
+        "stat": "max",
+        "unit": "short"
       },
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
+            "type": "marcusolsson-static-datasource",
+            "uid": "P1D2C73DC01F2359B"
           },
-          "queryType": "randomWalk",
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "value",
+                "type": "number",
+                "values": [
+                  12,
+                  12,
+                  12,
+                  5,
+                  87,
+                  23,
+                  48,
+                  75,
+                  14,
+                  2
+                ]
+              },
+              {
+                "config": {},
+                "name": "env",
+                "type": "string",
+                "values": [
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "ldn",
+                  "ldn",
+                  "tyo",
+                  "tyo",
+                  "tyo",
+                  "tyo"
+                ]
+              },
+              {
+                "config": {},
+                "name": "host",
+                "type": "string",
+                "values": [
+                  "machine1",
+                  "machine2",
+                  "machine3",
+                  "machine4",
+                  "machine5",
+                  "machine6",
+                  "machine7",
+                  "machine8",
+                  "machine9",
+                  "machine10"
+                ]
+              }
+            ],
+            "meta": {},
+            "name": "Metric"
+          },
           "refId": "A"
         }
       ],
-      "title": "Panel Title",
+      "title": "Group Color Scheme",
+      "transformations": [
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "env",
+              "host"
+            ]
+          }
+        }
+      ],
+      "type": "digrich-bubblechart-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "P1D2C73DC01F2359B"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "colorSchemeParams": {
+          "colorScheme": "Threshold",
+          "gradientColors": [
+            "#73bf69",
+            "#f2495c"
+          ],
+          "gradientThresholds": "20,50",
+          "groupDepthColors": [
+            "#E0B400",
+            "#FFF899"
+          ],
+          "thresholdColors": [
+            "#E02F44",
+            "#F2CC0C",
+            "#56A64B"
+          ],
+          "thresholds": "20,50"
+        },
+        "decimals": "2",
+        "displayLabels": "name",
+        "groupBy": "Label",
+        "groupLabels": [
+          "host"
+        ],
+        "groupSeparator": ",",
+        "stat": "max",
+        "unit": "short"
+      },
+      "pluginVersion": "10.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "P1D2C73DC01F2359B"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "value",
+                "type": "number",
+                "values": [
+                  12,
+                  12,
+                  12,
+                  5,
+                  87,
+                  23,
+                  48,
+                  75,
+                  14,
+                  2
+                ]
+              },
+              {
+                "config": {},
+                "name": "env",
+                "type": "string",
+                "values": [
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "ldn",
+                  "ldn",
+                  "tyo",
+                  "tyo",
+                  "tyo",
+                  "tyo"
+                ]
+              },
+              {
+                "config": {},
+                "name": "host",
+                "type": "string",
+                "values": [
+                  "machine1",
+                  "machine2",
+                  "machine3",
+                  "machine4",
+                  "machine5",
+                  "machine6",
+                  "machine7",
+                  "machine8",
+                  "machine9",
+                  "machine10"
+                ]
+              }
+            ],
+            "meta": {},
+            "name": "Metric"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Threshold Color Scheme",
+      "transformations": [
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "env",
+              "host"
+            ]
+          }
+        }
+      ],
+      "type": "digrich-bubblechart-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "P1D2C73DC01F2359B"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "colorSchemeParams": {
+          "colorScheme": "Gradient",
+          "gradientColors": [
+            "#73BF69",
+            "#37872D"
+          ],
+          "gradientThresholds": "20,50",
+          "groupDepthColors": [
+            "#E0B400",
+            "#FFF899"
+          ],
+          "thresholdColors": [
+            "#73bf69",
+            "#FAD22A",
+            "#f2495c"
+          ],
+          "thresholds": "20,50"
+        },
+        "decimals": "2",
+        "displayLabels": "name",
+        "groupBy": "Label",
+        "groupLabels": [
+          "host"
+        ],
+        "groupSeparator": ",",
+        "stat": "max",
+        "unit": "short"
+      },
+      "pluginVersion": "10.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "P1D2C73DC01F2359B"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "value",
+                "type": "number",
+                "values": [
+                  12,
+                  12,
+                  12,
+                  5,
+                  87,
+                  23,
+                  48,
+                  75,
+                  14,
+                  2
+                ]
+              },
+              {
+                "config": {},
+                "name": "env",
+                "type": "string",
+                "values": [
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "ldn",
+                  "ldn",
+                  "tyo",
+                  "tyo",
+                  "tyo",
+                  "tyo"
+                ]
+              },
+              {
+                "config": {},
+                "name": "host",
+                "type": "string",
+                "values": [
+                  "machine1",
+                  "machine2",
+                  "machine3",
+                  "machine4",
+                  "machine5",
+                  "machine6",
+                  "machine7",
+                  "machine8",
+                  "machine9",
+                  "machine10"
+                ]
+              }
+            ],
+            "meta": {},
+            "name": "Metric"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Gradient Color Scheme",
+      "transformations": [
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "env",
+              "host"
+            ]
+          }
+        }
+      ],
+      "type": "digrich-bubblechart-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "P1D2C73DC01F2359B"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "colorSchemeParams": {
+          "colorScheme": "Unique",
+          "gradientColors": [
+            "#73BF69",
+            "#37872D"
+          ],
+          "gradientThresholds": "20,50",
+          "groupDepthColors": [
+            "#E0B400",
+            "#FFF899"
+          ],
+          "thresholdColors": [
+            "#73bf69",
+            "#FAD22A",
+            "#f2495c"
+          ],
+          "thresholds": "20,50"
+        },
+        "decimals": "2",
+        "displayLabels": "name",
+        "groupBy": "Label",
+        "groupLabels": [
+          "host"
+        ],
+        "groupSeparator": ",",
+        "stat": "max",
+        "unit": "short"
+      },
+      "pluginVersion": "10.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "P1D2C73DC01F2359B"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "value",
+                "type": "number",
+                "values": [
+                  12,
+                  12,
+                  12,
+                  5,
+                  87,
+                  23,
+                  48,
+                  75,
+                  14,
+                  2
+                ]
+              },
+              {
+                "config": {},
+                "name": "env",
+                "type": "string",
+                "values": [
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "ldn",
+                  "ldn",
+                  "tyo",
+                  "tyo",
+                  "tyo",
+                  "tyo"
+                ]
+              },
+              {
+                "config": {},
+                "name": "host",
+                "type": "string",
+                "values": [
+                  "machine1",
+                  "machine2",
+                  "machine3",
+                  "machine4",
+                  "machine5",
+                  "machine6",
+                  "machine7",
+                  "machine8",
+                  "machine9",
+                  "machine10"
+                ]
+              }
+            ],
+            "meta": {},
+            "name": "Metric"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Unique Color Scheme",
+      "transformations": [
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "env",
+              "host"
+            ]
+          }
+        }
+      ],
+      "type": "digrich-bubblechart-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "P1D2C73DC01F2359B"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 9
+      },
+      "id": 6,
+      "options": {
+        "colorSchemeParams": {
+          "colorScheme": "Group",
+          "gradientColors": [
+            "#73bf69",
+            "#f2495c"
+          ],
+          "gradientThresholds": "20,50",
+          "groupDepthColors": [
+            "#1F60C4",
+            "#C0D8FF"
+          ],
+          "thresholdColors": [
+            "#73bf69",
+            "#FAD22A",
+            "#f2495c"
+          ],
+          "thresholds": "20,50"
+        },
+        "decimals": "2",
+        "displayLabels": "name",
+        "groupBy": "Label",
+        "groupLabels": [
+          "env",
+          "host"
+        ],
+        "groupSeparator": ",",
+        "stat": "max",
+        "unit": "short"
+      },
+      "pluginVersion": "10.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "P1D2C73DC01F2359B"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "value",
+                "type": "number",
+                "values": [
+                  12,
+                  12,
+                  12,
+                  5,
+                  87,
+                  23,
+                  48,
+                  75,
+                  14,
+                  2
+                ]
+              },
+              {
+                "config": {},
+                "name": "env",
+                "type": "string",
+                "values": [
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "ldn",
+                  "ldn",
+                  "tyo",
+                  "tyo",
+                  "tyo",
+                  "tyo"
+                ]
+              },
+              {
+                "config": {},
+                "name": "host",
+                "type": "string",
+                "values": [
+                  "machine1",
+                  "machine2",
+                  "machine3",
+                  "machine4",
+                  "machine5",
+                  "machine6",
+                  "machine7",
+                  "machine8",
+                  "machine9",
+                  "machine10"
+                ]
+              }
+            ],
+            "meta": {},
+            "name": "Metric"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Group Color Scheme",
+      "transformations": [
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "env",
+              "host"
+            ]
+          }
+        }
+      ],
+      "type": "digrich-bubblechart-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "P1D2C73DC01F2359B"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 6,
+        "y": 9
+      },
+      "id": 9,
+      "options": {
+        "colorSchemeParams": {
+          "colorScheme": "Threshold",
+          "gradientColors": [
+            "#73bf69",
+            "#f2495c"
+          ],
+          "gradientThresholds": "20,50",
+          "groupDepthColors": [
+            "#E0B400",
+            "#FFF899"
+          ],
+          "thresholdColors": [
+            "#E02F44",
+            "#FF780A",
+            "#56A64B"
+          ],
+          "thresholds": "20,70"
+        },
+        "decimals": "2",
+        "displayLabels": "name",
+        "groupBy": "Label",
+        "groupLabels": [
+          "env",
+          "host"
+        ],
+        "groupSeparator": ",",
+        "stat": "max",
+        "unit": "short"
+      },
+      "pluginVersion": "10.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "P1D2C73DC01F2359B"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "value",
+                "type": "number",
+                "values": [
+                  12,
+                  12,
+                  12,
+                  5,
+                  87,
+                  23,
+                  48,
+                  75,
+                  14,
+                  2
+                ]
+              },
+              {
+                "config": {},
+                "name": "env",
+                "type": "string",
+                "values": [
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "ldn",
+                  "ldn",
+                  "tyo",
+                  "tyo",
+                  "tyo",
+                  "tyo"
+                ]
+              },
+              {
+                "config": {},
+                "name": "host",
+                "type": "string",
+                "values": [
+                  "machine1",
+                  "machine2",
+                  "machine3",
+                  "machine4",
+                  "machine5",
+                  "machine6",
+                  "machine7",
+                  "machine8",
+                  "machine9",
+                  "machine10"
+                ]
+              }
+            ],
+            "meta": {},
+            "name": "Metric"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Threshold Color Scheme",
+      "transformations": [
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "env",
+              "host"
+            ]
+          }
+        }
+      ],
+      "type": "digrich-bubblechart-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "P1D2C73DC01F2359B"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 12,
+        "y": 9
+      },
+      "id": 8,
+      "options": {
+        "colorSchemeParams": {
+          "colorScheme": "Gradient",
+          "gradientColors": [
+            "#cba922",
+            "#FFEE52"
+          ],
+          "gradientThresholds": "20,50",
+          "groupDepthColors": [
+            "#E0B400",
+            "#FFF899"
+          ],
+          "thresholdColors": [
+            "#73bf69",
+            "#FAD22A",
+            "#f2495c"
+          ],
+          "thresholds": "20,50"
+        },
+        "decimals": "2",
+        "displayLabels": "name",
+        "groupBy": "Label",
+        "groupLabels": [
+          "env",
+          "host"
+        ],
+        "groupSeparator": ",",
+        "stat": "max",
+        "unit": "short"
+      },
+      "pluginVersion": "10.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "P1D2C73DC01F2359B"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "value",
+                "type": "number",
+                "values": [
+                  12,
+                  12,
+                  12,
+                  5,
+                  87,
+                  23,
+                  48,
+                  75,
+                  14,
+                  2
+                ]
+              },
+              {
+                "config": {},
+                "name": "env",
+                "type": "string",
+                "values": [
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "ldn",
+                  "ldn",
+                  "tyo",
+                  "tyo",
+                  "tyo",
+                  "tyo"
+                ]
+              },
+              {
+                "config": {},
+                "name": "host",
+                "type": "string",
+                "values": [
+                  "machine1",
+                  "machine2",
+                  "machine3",
+                  "machine4",
+                  "machine5",
+                  "machine6",
+                  "machine7",
+                  "machine8",
+                  "machine9",
+                  "machine10"
+                ]
+              }
+            ],
+            "meta": {},
+            "name": "Metric"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Gradient Color Scheme",
+      "transformations": [
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "env",
+              "host"
+            ]
+          }
+        }
+      ],
+      "type": "digrich-bubblechart-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "P1D2C73DC01F2359B"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 18,
+        "y": 9
+      },
+      "id": 7,
+      "options": {
+        "colorSchemeParams": {
+          "colorScheme": "Unique",
+          "gradientColors": [
+            "#73BF69",
+            "#37872D"
+          ],
+          "gradientThresholds": "20,50",
+          "groupDepthColors": [
+            "#E0B400",
+            "#FFF899"
+          ],
+          "thresholdColors": [
+            "#73bf69",
+            "#FAD22A",
+            "#f2495c"
+          ],
+          "thresholds": "20,50"
+        },
+        "decimals": "2",
+        "displayLabels": "name",
+        "groupBy": "Label",
+        "groupLabels": [
+          "env",
+          "host"
+        ],
+        "groupSeparator": ",",
+        "stat": "max",
+        "unit": "short"
+      },
+      "pluginVersion": "10.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "P1D2C73DC01F2359B"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "value",
+                "type": "number",
+                "values": [
+                  12,
+                  12,
+                  12,
+                  5,
+                  87,
+                  23,
+                  48,
+                  75,
+                  14,
+                  2
+                ]
+              },
+              {
+                "config": {},
+                "name": "env",
+                "type": "string",
+                "values": [
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "nyc",
+                  "ldn",
+                  "ldn",
+                  "tyo",
+                  "tyo",
+                  "tyo",
+                  "tyo"
+                ]
+              },
+              {
+                "config": {},
+                "name": "host",
+                "type": "string",
+                "values": [
+                  "machine1",
+                  "machine2",
+                  "machine3",
+                  "machine4",
+                  "machine5",
+                  "machine6",
+                  "machine7",
+                  "machine8",
+                  "machine9",
+                  "machine10"
+                ]
+              }
+            ],
+            "meta": {},
+            "name": "Metric"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Unique Color Scheme",
+      "transformations": [
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "env",
+              "host"
+            ]
+          }
+        }
+      ],
       "type": "digrich-bubblechart-panel"
     }
   ],
@@ -60,12 +1019,13 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Provisioned Bubble Chart dashboard",
-  "version": 0,
+  "uid": "a298f521-c385-49f1-a789-1fb5b8e02a1e",
+  "version": 3,
   "weekStart": ""
 }

@@ -4,6 +4,9 @@ services:
   grafana:
     container_name: 'digrich-bubblechart-panel'
     platform: 'linux/amd64'
+    environment:
+      - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/etc/grafana/provisioning/dashboards/dashboard.json
+      - GF_INSTALL_PLUGINS=marcusolsson-static-datasource
     build:
       context: ./.config
       args:
