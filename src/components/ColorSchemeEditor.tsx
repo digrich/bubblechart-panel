@@ -12,13 +12,16 @@ export const ColorSchemeEditor: React.FC<Props> = ({context, onChange}) => {
   const config: ColorSchemeParams = context.options.colorSchemeParams;
 
   const onFieldChange = <K extends keyof ColorSchemeParams>(field: K, value: ColorSchemeParams[K]) => {
-    config[field] = value;
-    onChange(context.options.colorSchemeParams);
+    onChange({
+      ...context.options.colorSchemeParams, 
+      [field]: value
+    });
   };
 
   const invertColors = () => {
-    config.thresholdColors.reverse();
-    onChange(context.options.colorSchemeParams);
+    onChange({
+      ...context.options.colorSchemeParams, 
+      thresholdColors: [...config.thresholdColors].reverse()});
   };
 
   return (

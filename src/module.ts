@@ -4,8 +4,10 @@ import {BubbleChartPanel} from 'components/BubbleChartPanel';
 import {FieldConfig} from '@grafana/schema';
 import './bubble-panel.css';
 import {ColorSchemeEditor} from 'components/ColorSchemeEditor';
+import {BubbleChartPanelMigrationHandler} from 'migrations';
 
 export const plugin = new PanelPlugin < BubbleChartOptions, FieldConfig> (BubbleChartPanel)
+  .setMigrationHandler(BubbleChartPanelMigrationHandler)
   .setPanelOptions((builder) => {
     builder
       .addMultiSelect({

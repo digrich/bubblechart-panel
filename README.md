@@ -69,7 +69,7 @@ To handle non-time series formatted data, first, convert it to a multiple series
 
 ### Compatibility
 Tested against the following databases:
-* [InfluxDB](https://docs.influxdata.com/influxdb/latest/using-influxdb/what-is-influxdb/)
+* [InfluxDB](https://www.influxdata.com/)
 * [OpenTSDB](http://opentsdb.net/)
 * [Bosun](http://bosun.org/)
 * [MySQL](http://docs.grafana.org/features/datasources/mysql/#using-mysql-in-grafana)
