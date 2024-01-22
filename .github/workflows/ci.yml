@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - migrate-to-react
+      - release-2.0.0
   pull_request:
     branches:
       - migrate-to-react
+      - release-2.0.0
 
 jobs:
   build:
