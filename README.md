@@ -107,3 +107,9 @@ For convenient development and testing, you can simply execute the following com
 docker-compose up
 ```
 Then browse to <http://localhost:3000>
+
+## Upgrade Implications
+
+### Changes in D3 Pack Layout Symmetry
+
+In the latest version of D3, the pack layout symmetry has been updated to accommodate a greater number of circles. Users migrating from the Angular version (v1.*.*) of this plugin may observe differences in their layout. Previously, D3 organized circles in a spiral form, but now it packs circles more densely, enhancing the overall arrangement. 
