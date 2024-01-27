@@ -3,11 +3,11 @@ name: CI
 on:
   push:
     branches:
-      - migrate-to-react
+      - master
       - release-2.0.0
   pull_request:
     branches:
-      - migrate-to-react
+      - master
       - release-2.0.0
 
 jobs:
